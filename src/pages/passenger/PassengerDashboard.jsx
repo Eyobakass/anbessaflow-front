@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { routeService, busStopService } from '../../api/services';
 import { useAuth } from '../../context/AuthContext';
 import { useToast } from '../../context/ToastContext';
@@ -69,7 +70,7 @@ export default function PassengerDashboard() {
           { label: 'My Wait Time', href: '/passenger/waiting', icon: Clock, color: 'yellow', desc: 'Check your position' },
           { label: 'Browse Routes', href: '/passenger/routes', icon: Route, color: 'green', desc: 'Find your route' },
         ].map((card) => (
-          <a key={card.href} href={card.href} style={{
+          <Link key={card.href} to={card.href} style={{
             display: 'block', padding: 'var(--space-6)',
             background: 'var(--color-surface)', border: '1px solid var(--color-border)',
             borderRadius: 'var(--radius-lg)', textDecoration: 'none',
@@ -83,7 +84,7 @@ export default function PassengerDashboard() {
             </div>
             <div style={{ fontWeight: 700, fontSize: 'var(--font-size-md)', color: 'var(--color-text)', marginBottom: 4 }}>{card.label}</div>
             <div style={{ fontSize: 'var(--font-size-sm)', color: 'var(--color-text-muted)' }}>{card.desc}</div>
-          </a>
+          </Link>
         ))}
       </div>
 
@@ -91,7 +92,7 @@ export default function PassengerDashboard() {
       <div className="card">
         <div className="section-header mb-4">
           <span className="section-title">Available Routes</span>
-          <a href="/passenger/routes" style={{ fontSize: 'var(--font-size-sm)', color: 'var(--color-primary-light)', fontWeight: 600 }}>View all →</a>
+          <Link to="/passenger/routes" style={{ fontSize: 'var(--font-size-sm)', color: 'var(--color-primary-light)', fontWeight: 600 }}>View all →</Link>
         </div>
         {loading ? (
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-3)' }}>

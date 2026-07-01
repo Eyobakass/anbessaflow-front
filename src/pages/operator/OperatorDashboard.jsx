@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { busService } from '../../api/services';
 import { useAuth } from '../../context/AuthContext';
 import { useToast } from '../../context/ToastContext';
@@ -61,7 +62,7 @@ export default function OperatorDashboard() {
             { label: '🚌 Log Bus Arrival', href: '/operator/arrivals', desc: 'Record when a bus arrives at a stop' },
             { label: '📋 View Queue Status', href: '/operator/queues', desc: 'Check current queue lengths at stops' },
           ].map((a) => (
-            <a key={a.href} href={a.href} style={{
+            <Link key={a.href} to={a.href} style={{
               display: 'block', padding: '20px', borderRadius: 'var(--radius-lg)',
               background: 'var(--color-surface-2)', border: '1px solid var(--color-border)',
               textDecoration: 'none', transition: 'all var(--transition-base)'
@@ -71,7 +72,7 @@ export default function OperatorDashboard() {
             >
               <div style={{ fontSize: 'var(--font-size-md)', fontWeight: 700, color: 'var(--color-text)', marginBottom: 6 }}>{a.label}</div>
               <div style={{ fontSize: 'var(--font-size-sm)', color: 'var(--color-text-muted)' }}>{a.desc}</div>
-            </a>
+            </Link>
           ))}
         </div>
       </div>
